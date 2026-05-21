@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>في رحاب ذكراكِ — جميلة أسعد المالكي</title>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --gold:        #c9a84c;
+  --gold-light:  #e8c97a;
+  --gold-pale:   #f5e4a8;
+  --gold-dim:    #7a6030;
+  --gold-glow:   rgba(201,168,76,0.18);
+  --cream:       #f5f0e8;
+  --parchment:   #ede5d4;
+  --ink:         #0e0b06;
+  --ink-2:       #1a1410;
+  --ink-soft:    #9e8a6a;
+  --border:      rgba(201,168,76,0.14);
+  --border-hover:rgba(201,168,76,0.35);
+}
+
+*,*::before,*::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+
+body {
+  background: var(--ink);
+  color: var(--cream);
+  font-family: 'Amiri','Noto Naskh Arabic',serif;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* ── BG LAYER ── */
+body::before {
+  content:''; position:fixed; inset:0; z-index:0; pointer-events:none;
+  background:
+    radial-gradient(ellipse 140% 70% at 50% -10%, #251a08 0%, transparent 55%),
+    radial-gradient(ellipse 70% 50% at 10% 90%,  #1c1206 0%, transparent 50%),
+    radial-gradient(ellipse 50% 40% at 90% 50%,  #1e1508 0%, transparent 50%),
+    #0a0805;
+}
+
+/* ── STARS ── */
+.stars { position:fixed; inset:0; z-index:0; pointer-events:none; }
+.star {
+  position:absolute; border-radius:50%;
+  background:var(--gold-light);
+  animation: twinkle var(--d,3s) ease-in-out infinite var(--delay,0s);
+}
+@keyframes twinkle {
+  0%,100%{opacity:.1; transform:scale(.7);}
+  50%    {opacity:.85; transform:scale(1.5);}
+}
+
+/* ── HERO ── */
+#hero {
+  position:relative; z-index:1;
+  min-height:100vh;
+  display:flex; flex-direction:column;
+  align-items:center; justify-content:center;
+  text-align:center; padding:5rem 2rem 4rem;
+  overflow:hidden;
+}
+
+/* decorative corner lines */
+.hero-corners { position:absolute; inset:24px; pointer-events:none; }
+.hero-corners::before,.hero-corners::after,
+.hero-corners span::before,.hero-corners span::after {
+  content:''; position:absolute;
+  width:40px; height:40px;
+  border-color: rgba(201,168,76,.35);
+  border-style:solid;
+}
+.hero-corners::before  { top:0;    right:0;  border-width:1px 1px 0 0; }
+.hero-corners::after   { top:0;    left:0;   border-width:1px 0 0 1px; }
+.hero-corners span::before { bottom:0; right:0; border-width:0 1px 1px 0; }
+.hero-corners span::after  { bottom:0; left:0;  border-width:0 0 1px 1px; }
+
+.hero-glow {
+  position:absolute; width:700px; height:700px; border-radius:50%;
+  background:radial-gradient(circle, rgba(201,168,76,.1) 0%, transparent 70%);
+  top:50%; left:50%; transform:translate(-50%,-50%);
+  animation:pulse-glow 5s ease-in-out infinite; pointer-events:none;
+}
+@keyframes pulse-glow {
+  0%,100%{transform:translate(-50%,-50%) scale(1);   opacity:.6;}
+  50%    {transform:translate(-50%,-50%) scale(1.2); opacity:1;}
+}
+
+.hero-bismillah {
+  font-size:.9rem; letter-spacing:.25em; color:var(--gold);
+  opacity:.7; margin-bottom:2rem;
+  animation:fadeUp 1s ease both;
+}
+
+.hero-name {
+  font-size:clamp(3rem,9vw,7rem); font-weight:700;
+  color:var(--cream); line-height:1.1;
+  text-shadow:0 0 100px rgba(201,168,76,.25);
+  animation:fadeUp 1s .15s ease both;
+}
+
+.hero-name-sub {
+  display:block; margin-top:.4rem;
+  font-size:clamp(1.8rem,5vw,3.8rem);
+  background:linear-gradient(135deg, var(--gold-pale), var(--gold), var(--gold-dim));
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+}
+
+.hero-rahimaha {
+  margin-top:1.2rem;
+  font-size:1.15rem; color:var(--gold); opacity:.75;
+  letter-spacing:.05em;
+  animation:fadeUp 1s .3s ease both;
+}
+
+.hero-line {
+  width:180px; height:1px; margin:2rem auto;
+  background:linear-gradient(to left, transparent, var(--gold), transparent);
+  animation:fadeUp 1s .45s ease both;
+}
+
+.hero-verse {
+  max-width:520px; font-size:1.2rem; line-height:2.1;
+  color:var(--parchment); opacity:.8; font-style:italic;
+  animation:fadeUp 1s .6s ease both;
+}
+
+.hero-dates {
+  margin-top:1.5rem; font-size:1rem; color:var(--gold); opacity:.55;
+  letter-spacing:.1em;
+  animation:fadeUp 1s .75s ease both;
+}
+
+.scroll-hint {
+  position:absolute; bottom:2rem; left:50%; transform:translateX(-50%);
+  color:var(--gold); opacity:.4; font-size:1.5rem;
+  animation:bounce 2.5s ease-in-out infinite;
+}
+@keyframes bounce { 0%,100%{transform:translateX(-50%) translateY(0);}50%{transform:translateX(-50%) translateY(10px);} }
+@keyframes fadeUp  { from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:translateY(0);} }
+
+/* ── NAV ── */
+nav {
+  position:sticky; top:0; z-index:100;
+  background:rgba(10,8,5,.93); backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--border);
+  padding:.85rem 1.5rem;
+  display:flex; justify-content:center; gap:0; flex-wrap:wrap;
+}
+nav a {
+  color:var(--ink-soft); text-decoration:none;
+  font-family:'Noto Naskh Arabic',serif; font-size:.88rem;
+  padding:.4rem 1rem; border-radius:2px;
+  transition:all .3s; position:relative;
+}
+nav a::after {
+  content:''; position:absolute; bottom:0; right:10%; left:10%;
+  height:1px; background:var(--gold);
+  transform:scaleX(0); transition:transform .3s;
+  transform-origin:center;
+}
+nav a:hover { color:var(--gold-light); }
+nav a:hover::after { transform:scaleX(1); }
+
+/* ── LAYOUT ── */
+section {
+  position:relative; z-index:1;
+  max-width:860px; margin:0 auto;
+  padding:5rem 2rem;
+}
+section.wide { max-width:960px; }
+
+/* ── SECTION HEADER ── */
+.sec-head {
+  text-align:center; margin-bottom:3.5rem;
+}
+.sec-head h2 {
+  font-size:clamp(1.8rem,4vw,2.7rem); font-weight:700;
+  color:var(--gold-light); margin-bottom:.5rem;
+  position:relative; display:inline-block;
+}
+.sec-head h2::after {
+  content:''; display:block; margin:.6rem auto 0;
+  width:60px; height:1px;
+  background:linear-gradient(to left, transparent, var(--gold), transparent);
+}
+.sec-head p { color:var(--ink-soft); font-size:1rem; margin-top:.5rem; }
+
+/* ── CARD ── */
+.card {
+  background:linear-gradient(160deg, rgba(255,255,255,.025), rgba(255,255,255,.01));
+  border:1px solid var(--border);
+  border-radius:6px;
+  padding:2.8rem 3rem;
+  margin-bottom:2rem;
+  position:relative; overflow:hidden;
+  transition:border-color .4s, box-shadow .4s, transform .3s;
+}
+.card::before {
+  content:''; position:absolute; inset:0; pointer-events:none;
+  background:radial-gradient(ellipse 80% 60% at 100% 0%, rgba(201,168,76,.05), transparent 70%);
+}
+.card:hover {
+  border-color:var(--border-hover);
+  box-shadow:0 8px 60px rgba(201,168,76,.07);
+  transform:translateY(-2px);
+}
+
+/* special biography card */
+.card.bio {
+  border-right:3px solid var(--gold);
+  background:linear-gradient(160deg, rgba(201,168,76,.07), rgba(201,168,76,.02));
+}
+
+/* ── BADGE ── */
+.badge {
+  display:inline-flex; align-items:center; gap:.45rem;
+  background:rgba(201,168,76,.08);
+  border:1px solid rgba(201,168,76,.22);
+  border-radius:30px; padding:.28rem 1rem;
+  font-size:.82rem; color:var(--gold);
+  margin-bottom:1.4rem; letter-spacing:.02em;
+}
+
+/* ── CARD TITLE ── */
+.card-title {
+  font-size:1.65rem; font-weight:700;
+  color:var(--gold-light); margin-bottom:1.4rem;
+  line-height:1.4;
+}
+
+/* ── PROSE ── */
+.prose {
+  font-size:1.18rem; line-height:2.25;
+  color:var(--parchment); text-align:justify;
+}
+.prose p { margin-bottom:1.1rem; }
+.prose p:last-child { margin-bottom:0; }
+
+/* ── DIVIDER ── */
+.divider {
+  text-align:center; color:var(--gold);
+  opacity:.35; margin:1.2rem 0;
+  font-size:.75rem; letter-spacing:.6em;
+}
+
+/* ── SIGNATURE ── */
+.sig {
+  margin-top:1.8rem; padding-top:1rem;
+  border-top:1px solid rgba(201,168,76,.1);
+  color:var(--gold); font-size:1rem; font-style:italic;
+  text-align:left; opacity:.85;
+}
+
+/* ── BAYT (poetry line) ── */
+.bayt {
+  display:flex; justify-content:center;
+  gap:2.5rem; text-align:center;
+  margin-bottom:.5rem; flex-wrap:wrap;
+  font-size:1.25rem; line-height:2;
+  color:var(--parchment);
+}
+
+/* ── HAFIZ BLOCK ── */
+.hafiz {
+  background:rgba(201,168,76,.03);
+  border:1px solid rgba(201,168,76,.12);
+  border-top:2px solid rgba(201,168,76,.25);
+  padding:2.5rem 3rem; text-align:center;
+  position:relative; margin:2rem 0; border-radius:0 0 6px 6px;
+}
+.hafiz-line { font-size:1.3rem; color:var(--gold-light); line-height:2.2; }
+.hafiz-attr { margin-top:1rem; font-size:.9rem; color:var(--ink-soft); }
+
+/* ── TRIBUTE CARD ── */
+.tribute {
+  background:linear-gradient(135deg, rgba(201,168,76,.05), rgba(201,168,76,.01));
+  border:1px solid rgba(201,168,76,.18);
+  border-right:3px solid var(--gold);
+  padding:2.2rem 2.5rem; margin-bottom:1.5rem;
+  border-radius:0 6px 6px 0;
+  transition:transform .3s;
+}
+.tribute:hover { transform:translateX(-4px); }
+.tribute-author {
+  font-size:.88rem; color:var(--gold);
+  margin-bottom:1rem;
+  display:flex; align-items:center; gap:.5rem;
+}
+.tribute-author::before { content:'✦'; font-size:.65rem; }
+
+/* ── AUDIO CARD ── */
+.audio-card {
+  background:linear-gradient(135deg, rgba(201,168,76,.06), rgba(201,168,76,.02));
+  border:1px solid rgba(201,168,76,.2);
+  border-radius:6px; padding:2.5rem;
+  text-align:center; margin-bottom:2rem;
+}
+audio {
+  width:100%; max-width:480px;
+  border-radius:40px; outline:none;
+  filter:sepia(.2) saturate(1.4) brightness(1.05);
+}
+
+/* ── VIDEO CARD ── */
+.video-card {
+  background:rgba(0,0,0,.3); border:1px solid var(--border);
+  border-radius:8px; overflow:hidden; margin-bottom:2rem;
+}
+.video-card video { width:100%; display:block; }
+.video-caption {
+  padding:.9rem 1.5rem; text-align:center;
+  font-size:.88rem; color:var(--ink-soft);
+  border-top:1px solid var(--border);
+}
+
+/* ── TWEET BUTTON ── */
+.tweet-btn {
+  display:inline-flex; align-items:center; gap:.65rem;
+  background:rgba(201,168,76,.08);
+  border:1px solid rgba(201,168,76,.3);
+  color:var(--gold-light); text-decoration:none;
+  padding:1rem 2.2rem; border-radius:40px;
+  font-family:'Noto Naskh Arabic',serif; font-size:1rem;
+  transition:all .3s; margin-top:1.2rem;
+}
+.tweet-btn:hover {
+  background:rgba(201,168,76,.18);
+  border-color:rgba(201,168,76,.55);
+  transform:translateY(-2px);
+  box-shadow:0 6px 30px rgba(201,168,76,.12);
+}
+
+/* ── CERTIFICATE ── */
+.cert-wrap {
+  background:rgba(255,255,255,.02);
+  border:1px solid rgba(201,168,76,.22);
+  border-radius:6px; padding:2.5rem;
+  max-width:640px; margin:0 auto;
+  font-family:'Noto Naskh Arabic',serif;
+}
+.cert-head { text-align:center; padding-bottom:1.5rem; margin-bottom:1.5rem; border-bottom:1px solid var(--border); }
+.cert-title-ar { font-size:1.6rem; font-weight:700; color:var(--gold-light); font-family:'Amiri',serif; }
+.cert-title-en { font-size:.85rem; color:var(--ink-soft); margin-top:.3rem; }
+.cert-section {
+  background:rgba(201,168,76,.03);
+  border:1px solid rgba(201,168,76,.1);
+  border-radius:4px; padding:1.4rem 1.6rem;
+  margin-bottom:1.2rem;
+}
+.cert-section-title {
+  text-align:center; color:var(--gold); font-size:.78rem;
+  letter-spacing:.12em; margin-bottom:1rem; opacity:.8;
+}
+.cert-grid { display:grid; grid-template-columns:1fr 1fr; gap:.7rem 2rem; font-size:.93rem; }
+.cert-label { color:var(--ink-soft); font-size:.82rem; margin-bottom:.2rem; }
+.cert-val { color:var(--cream); }
+.cert-val.highlight { color:var(--gold-light); font-family:'Amiri',serif; font-size:1.05rem; }
+.cert-footer { text-align:center; margin-top:1.2rem; padding-top:1rem; border-top:1px solid var(--border); color:var(--ink-soft); font-size:.8rem; }
+
+/* ── DUA BLOCK ── */
+.dua-block {
+  text-align:center; padding:3rem 2rem;
+  font-family:'Amiri',serif; font-size:1.4rem;
+  color:var(--gold-light); line-height:2.6;
+  border-top:1px solid var(--border);
+  margin-top:1rem;
+}
+.dua-block .ameen {
+  display:block; margin-top:1rem;
+  font-size:1rem; color:var(--gold); opacity:.55;
+  letter-spacing:.2em;
+}
+
+/* ── FOOTER ── */
+footer {
+  position:relative; z-index:1; text-align:center;
+  padding:4rem 2rem;
+  border-top:1px solid var(--border);
+}
+.footer-name {
+  font-size:1.6rem; color:var(--gold);
+  font-family:'Amiri',serif; margin-bottom:.5rem;
+}
+.footer-sub { color:var(--ink-soft); font-size:.9rem; line-height:1.9; }
+.footer-ornament {
+  margin:1.5rem auto; width:120px; height:1px;
+  background:linear-gradient(to left, transparent, var(--gold), transparent);
+}
+
+/* ── REVEAL ── */
+.reveal { opacity:0; transform:translateY(32px); transition:opacity .8s ease, transform .8s ease; }
+.reveal.visible { opacity:1; transform:translateY(0); }
+
+/* ── RESPONSIVE ── */
+@media(max-width:640px){
+  .card { padding:2rem 1.5rem; }
+  .bayt { gap:.8rem; flex-direction:column; }
+  nav { gap:0; }
+  nav a { font-size:.8rem; padding:.35rem .7rem; }
+  .cert-grid { grid-template-columns:1fr; }
+  .hafiz { padding:2rem 1.5rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="stars" id="stars"></div>
+
+<!-- ══ HERO ══ -->
+<section id="hero">
+  <div class="hero-corners"><span></span></div>
+  <div class="hero-glow"></div>
+
+  <div class="hero-bismillah">بِسْمِ اللهِ الرَّحْمَنِ الرَّحِيم</div>
+
+  <h1 class="hero-name">
+    جميلة أسعد المالكي
+    <span class="hero-name-sub">رحمها الله</span>
+  </h1>
+
+  <div class="hero-rahimaha">١٣٧٦ — ١٤٤٦ هـ &nbsp;✦&nbsp; في ذمة الله</div>
+
+  <div class="hero-line"></div>
+
+  <div class="hero-verse">
+    « وَالَّذِينَ آمَنُوا وَاتَّبَعَتْهُمْ ذُرِّيَّتُهُم بِإِيمَانٍ أَلْحَقْنَا بِهِمْ ذُرِّيَّتَهُمْ »
+  </div>
+
+  <div class="hero-dates">في رحاب ذكراكِ — تأبينٌ وتذكير</div>
+  <div class="scroll-hint">↓</div>
+</section>
+
+<!-- ══ NAV ══ -->
+<nav>
+  <a href="#biography">سيرتها</a>
+  <a href="#about">عنها</a>
+  <a href="#poems-about">رثاؤها</a>
+  <a href="#children-poems">كلمات أبنائها</a>
+  <a href="#ziyad">يان جم</a>
+  <a href="#tweet">تغريدة</a>
+  <a href="#video">فيديو</a>
+  <a href="#tributes">إشادات</a>
+  <a href="#certificate">شهادة الوفاة</a>
+</nav>
+
+<!-- ══ BIOGRAPHY ══ -->
+<section id="biography" class="reveal">
+  <div class="sec-head">
+    <h2>جميلة أسعد جابر محمد الخالدي</h2>
+    <p>رحمها الله وأسكنها فسيح جناته</p>
+  </div>
+
+  <div class="card bio">
+    <div style="text-align:center; margin-bottom:1.8rem;">
+      <span style="color:var(--gold-light); font-size:1.45rem; font-weight:700; font-family:'Amiri',serif;">
+        المرأة العظيمة، طيبة القلب، حسنة الخلق
+      </span>
+    </div>
+    <div class="prose">
+      <p>عُرفت بين أهلها ومن عرفها بحسن المعاملة وصدق المشاعر ونقاء السريرة. تنحدر من أسرةٍ عريقة اشتهرت بالكرم والأصالة وحسن الخلق، فكانت خيرَ امتدادٍ لتلك القيم النبيلة التي تربّت عليها ونشأت في ظلها.</p>
+      <p>عاشت حياتها محبةً للخير، قريبةً من الناس، تحمل في قلبها الرحمة والتسامح، وتزرع الألفة في كل مجلس تحضره. كانت مثالًا للمرأة الحكيمة الصبورة، التي تواجه صعوبات الحياة بإيمانٍ ورضا، وتمنح من حولها الدعم والحنان دون انتظار مقابل.</p>
+      <p>عرفها الجميع بكرمها وبشاشتها، فلم يكن بابها يُغلق في وجه محتاج، ولا تخلو كلماتها من لطفٍ ودعاءٍ طيب. وكانت حريصةً على صلة الرحم، محافظةً على العادات الأصيلة والقيم الرفيعة التي ورثتها عن أسرتها الكريمة.</p>
+      <p>وقد تركت — رحمها الله — أثرًا جميلًا في قلوب أهلها وأبنائها وكل من عرفها، وسيبقى ذكرها الطيب حاضرًا بما غرسته من محبةٍ وأخلاقٍ ودعواتٍ صادقة.</p>
+      <div class="divider">✦ ✦ ✦</div>
+      <p style="text-align:center; color:var(--gold-light); font-size:1.22rem; line-height:2.4;">
+        نسأل الله أن يغفر لها ويرحمها، وأن يجعل ما قدّمته من خيرٍ وإحسانٍ في ميزان حسناتها،<br>
+        وأن يجمعها بمن تحب في جنات النعيم.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ ABOUT ══ -->
+<section id="about" class="reveal">
+  <div class="sec-head">
+    <h2>أمٌّ بأسرة في أم</h2>
+    <p>من هي جميلة أسعد المالكي</p>
+  </div>
+
+  <div class="card">
+    <div class="prose">
+      <p>أمٌّ لم تكن أماً فحسب، بل كانت <strong style="color:var(--gold-light)">أمةً في أم</strong>؛ اتسع قلبها للجميع — أبناءً وأحفاداً وإخوةً وجيراناً وأقارب وأباعد — بل تعدّى حنانها وعطفها ليشمل الحيوان فضلاً عن الإنسان.</p>
+      <p>لم تكن متعلمةً لكنها كانت تحبّ العلم وتحرص عليه، تتابع أبناءها في كتبهم ودفاترهم وحقائبهم، تفرح بإنجازاتهم وتحتفل بنجاحاتهم، تغرس فيهم علوّ الهمّة والتحفيز على المزيد.</p>
+      <p>ربّت أجيالاً على القيم النبيلة والخصال الحميدة: احترام الكبير، ورحمة الصغير، والحياء، والمحافظة على الصلاة والصيام، حتى غدا أبناؤها شهادةً حيّة على عظمتها.</p>
+    </div>
+  </div>
+
+  <div class="hafiz">
+    <div class="hafiz-line">الأُمُّ مَدرَسَةٌ إِذَا أَعدَدتَها &nbsp; أَعدَدتَ شَعباً طَيِّبَ الأَعراقِ</div>
+    <div class="hafiz-line">الأُمُّ رَوضٌ إِن تَعَهَّدَهُ الحَيا &nbsp; بِالرِّي أَورَقَ أَيَّمَا إِيراقِ</div>
+    <div class="hafiz-line">الأُمُّ أُستَاذُ الأَسَاتِذَةِ الأُلى &nbsp; شَغَلَت مَآثِرُهُم مَدَى الآفاقِ</div>
+    <div class="hafiz-attr">— حافظ إبراهيم</div>
+  </div>
+</section>
+
+<!-- ══ POEMS ABOUT ══ -->
+<section id="poems-about" class="reveal">
+  <div class="sec-head">
+    <h2>مراثٍ في جميلة</h2>
+    <p>ما قِيل في رثائها رحمها الله</p>
+  </div>
+
+  <div class="card reveal">
+    <div class="badge">✦ مرثية المالكي</div>
+    <div class="card-title">مرثية والدة عبد الرحمن مسعود المالكي</div>
+    <div class="prose">
+      <div class="bayt"><span>رَحَلَت فَأَظلَمَتِ الرُّبوعُ وَكانَت</span><span>شَمساً تُضِيءُ الدَّارَ وَالأَكنانَا</span></div>
+      <div class="bayt"><span>يَا أُمَّنَا أَيُّ الكَلامِ يُعَبِّرُ</span><span>عَن وَجدِنَا وَالقَلبُ مَا زالَ جانَا</span></div>
+      <div class="bayt"><span>كُنتِ الأَمانَ إِذَا الخُطوبُ تَلاطَمَت</span><span>وَالبِرَّ وَالإِيمانَ وَالإِحسانا</span></div>
+      <div class="bayt"><span>رَبَّيتِ فِينا كُلَّ خُلقٍ نَابِهٍ</span><span>فَجَنَينَا مَا زَرَعتِهِ أَزمانَا</span></div>
+      <div class="divider">✦ ✦ ✦</div>
+      <div class="bayt"><span>لَم تَعلَمِي حَرفاً وَلَكِن كُنتِ أَنتِ</span><span>الأُستَاذَةُ عَلَّمَت أَجيالَنا</span></div>
+      <div class="bayt"><span>وَدَعَوتِ لِلأَولادِ فِي سِرٍّ وَجَهرٍ</span><span>فَارتَفَعنَا بِالدُّعاءِ سَمَاهُنا</span></div>
+      <div class="bayt"><span>قُومِي هَنِيئاً فِي جِوارِ الواحِدِ الرَّح</span><span>مَنِ وَاشرَبِي مِنَ العَيشِ هَنَا</span></div>
+      <div class="bayt"><span>إِنَّا لِلَّهِ وَالفِراقُ عَظِيمُهُ</span><span>لَكِنَّ لِلَّهِ ما أَعطَى وَمَا وَهَبَانا</span></div>
+    </div>
+    <div class="sig">من المرثية المسجّلة — رحمها الله</div>
+  </div>
+
+  <!-- AUDIO -->
+  <div class="audio-card reveal">
+    <div class="badge" style="margin:0 auto 1.2rem;">✦ استمع إلى المرثية صوتيًا</div>
+    <p style="color:var(--ink-soft); font-size:.95rem; margin-bottom:1.5rem;">مرثية والدة عبد الرحمن مسعود المالكي رحمها الله</p>
+    <audio controls>
+      <source src="مرثية_جميلة_المالكي.mp3" type="audio/mpeg">
+    </audio>
+    <p style="color:var(--ink-soft); font-size:.82rem; margin-top:1rem;">رحمها الله وأسكنها الفردوس الأعلى</p>
+  </div>
+</section>
+
+<!-- ══ CHILDREN ══ -->
+<section id="children-poems" class="reveal wide">
+  <div class="sec-head">
+    <h2>كلمات الأبناء والبنات</h2>
+    <p>ما أفاض به القلب المكلوم في رثاء الأم الغالية</p>
+  </div>
+
+  <div class="card reveal">
+    <div class="badge">✦ ابنها: مفرح</div>
+    <div class="card-title">أمي</div>
+    <div class="prose">
+      <p>أمي ذلك القلب الرحيم، والعقل الراجح الرزين، والروح الخفيفة الجميلة...</p>
+      <p>أمي التي حملت كل معاني الجمال الظاهر والباطن اسمًا ورسمًا ومعنى وسيرة...</p>
+      <p>أمي صاحبة القلب الحنون الممتلئ ثقةً بالله وإيمانًا صادقًا بوعده وواسع فضله وكريم عطاياه.</p>
+      <p>أمي ذلك المعين المتدفق والنهر الجاري من الحب والعطاء...</p>
+      <div class="divider">✦</div>
+      <p>أحقًا قد رحلتِ عنا؟ أصدقًا قد غادرتِ دنيانا؟</p>
+      <p>نعم يا أمي لقد رحلتِ عنّا جسدًا، ولكن ذكراكِ قد نشقت في قلوبنا ورسمت في كل ناحية وزاوية مررتِ بها.</p>
+      <p>لقد طِبتِ يا أمي حيةً حسنةَ الخُلق والخَلق، وتركتِ خلفكِ سيرةً حافلة بكل قيم الجمال والتقوى والكرم والإيمان.</p>
+      <div class="divider">✦</div>
+      <p>فقدُنا فيكِ يا أمي كبير، وألمنا عظيم. فاللهم اجعل عيدها في الجنة أجمل مما كان في الدنيا، وارزقنا نعمة الدعاء الذي لا ينقطع لها.</p>
+    </div>
+    <div class="sig">ابنك مفرح</div>
+  </div>
+
+  <div class="card reveal">
+    <div class="badge">✦ ابنها: مفرح — في ذكرى مرور عام</div>
+    <div class="card-title">وانقضى عامٌ وحلّت الذكرى</div>
+    <div class="prose">
+      <p>انقضى عام وحلّت الذكرى قاسيةً؛ فالألم الذي لا يُشبهه ألم، والفقد الذي لا يوازيه فقد، هو فقد الأم.</p>
+      <p>فبعد عام طوّت أيامه وتصرّمت لياليه، قد يظن البعض أن الحزن قد انتهى والفقد قد انطوى — لكن الحقيقة ليست كذلك. فالوجد لم ينطفئ، والألم لم يزل، والشوق يتعاظم يومًا بعد يوم، لكنه أصبح أكثر هدوءًا وأعمق أثرًا.</p>
+      <div class="divider">✦</div>
+      <p>حين تفقد الأم تدرك تمامًا أن الجدار الأكبر والسور الأعظم الذي كنت تتقي به عند مدلهمات الخطوب قد انهار تمامًا، والبوابة التي كانت تنهمر عليك منها الخيرات وتغمرك منها الدعوات قد أُوصدت.</p>
+      <div class="divider">✦</div>
+      <p>لا تزال كل الأماكن والزوايا تتنفس ذكراكِ؛ أناجيكِ اليوم بعد عام مضى وانقضى، وكأنكِ تسمعينني — لا لأبثّكِ حزني، ولكن لأطمئن قلبي بأنكِ في مقامٍ يليق بقلبكِ الأبيض وإيمانكِ العميق وروحكِ الزكية.</p>
+      <p style="font-style:italic; color:var(--gold-light);">«يقولون إن الوقت يداوي الجروح، لكنه في حالة الأم يعلّمنا فقط كيف نسير ونحن نحمل هذا الجرح في قلوبنا بكل فخر وهدوء.»</p>
+    </div>
+    <div class="sig">ابنك مفرح — 1447/11/10 هـ</div>
+  </div>
+
+  <div class="card reveal">
+    <div class="badge">✦ ابنها: أبو خالد</div>
+    <div class="card-title">عيدٌ بأيّ حالٍ عُدتَ يا عيد</div>
+    <div class="prose">
+      <p>هذا اليوم هو عيد الأضحى الخامس والخمسون منذ أن وضعتني أمي الغالية رحمها الله في الخورمة. أربعة وخمسون عيدًا منها كانت أمي بيننا بجسدها وقلبها وحسّها — كنتُ أسمعها دائمًا ما تردّد: <em style="color:var(--gold-light);">"الله يهبه عيد خيرٍ والعافية"</em>.</p>
+      <p>لكن في هذا العيد لم أعد أسمع هذه الكلمة من فمها الجميل الزاكي. أقضي العيد وقلبي كسيرٌ بفقدها وألمي كبير برحيلها.</p>
+      <div class="divider">✦</div>
+      <p>بفقد أبي فقدنا جبلًا شامخًا عظيمًا كان يظلّنا، وبفقدكِ يا أمي فقدنا قلبًا رحيمًا عطوفًا ولسانًا صادقًا يظلّنا بدعواته الخالصة. كنتُ أطمئن إذا سافرت: سوف تدعو لي أمي. وأطمئن إذا غبت: دعاء أمي يحفظ غيابي. واليوم فقدنا هذا الدعاء الصادق — تُرى من يعوّض ذلك؟</p>
+      <div class="divider">✦</div>
+      <p style="text-align:center; color:var(--gold-light); font-size:1.25rem; line-height:2.4;">
+        «اللهم اجعل عيدها في الجنة أجمل مما كان في الدنيا،<br>
+        واجمعها وأبي ووالديهما في الفردوس الأعلى،<br>
+        وارزقنا يا ربّ نعمة الدعاء الذي لا ينقطع لهما،<br>
+        واجمعنا بهم في جنات النعيم يا أرحم الراحمين»
+      </p>
+    </div>
+    <div class="sig">ولدك: أبو خالد</div>
+  </div>
+
+  <div class="card reveal">
+    <div class="badge">✦ ابنتها: أمل</div>
+    <div class="card-title">سعادة الدنيا وأنسها</div>
+    <div class="prose">
+      <p>كنتُ أعلم في قرارة نفسي أن الأيام ستمضي وأن الموت سيأخذها مني، لكن الموت لا يستأذن صغيرًا ولا كبيرًا. أخذها دون أن أعلم أنها ستغادر الدنيا.</p>
+      <p>لم أكن أتخيّل أني سأفقدها وأعيش بدونها، لكنها غادرت الدنيا، وأدركتُ بعد مغادرتها أنها حياة زائلة. شعور الأمن بالبقاء ودوام اللقاء غير متحقق في هذه الدار.</p>
+      <div class="divider">✦</div>
+      <p>شعرتُ بالوحدة بعدكِ. قد كنتِ لي سعادة الدنيا وأنسها. كنتُ آخذ منكِ جرعاتِ السعادة والأمان. لم أكن أتخيّل في يوم من الأيام أن أفقد هذه السعادة والأمان والأنس.</p>
+      <p style="text-align:center; color:var(--gold-light); font-size:1.3rem;">آه يا أُمّي... ما أقسى الحياة بدونكِ، وما أقسى فراق الأم.</p>
+      <p>عليكِ السلام وأصدق الدعوات، يا أمي، يا فقيدة قلبي وروحي.</p>
+    </div>
+    <div class="sig">ابنتك: أمل</div>
+  </div>
+
+  <div class="card reveal">
+    <div class="badge">✦ حفيدها: زياد</div>
+    <div class="card-title">جدّتي جميلة</div>
+    <div class="prose">
+      <p>جدّتي جميلة... اسمٌ حمل معناه كاملًا، فكانت جميلةً في كل شيء — في وجهها المُشرق، وفي قلبها الرحيم، وفي كلمةٍ طيبة لم تبخل بها على أحد.</p>
+      <p>لم أكن أعرف أن للحنان عنوانًا حتى جلستُ بجانبكِ، ولم أكن أعرف أن للأمان روحًا حتى فقدتكِ.</p>
+      <div class="divider">✦</div>
+      <p>يا جدّتي... رحلتِ وتركتِ فينا شيئًا لا يُرى لكنه يُحَس — تركتِ صوتكِ يرنّ كلما احتجنا طمأنينةً، وتركتِ دعواتكِ سياجًا يحيط بنا وإن غبتِ.</p>
+      <p>كنتُ صغيرًا حين كنتِ تمسحين رأسي وتدعين لي، ولم أكن أدري حينها أنني أختزن لحظاتٍ لن تتكرر.</p>
+      <div class="divider">✦</div>
+      <p>رحمكِ الله يا جدّتي، وجمعنا بكِ في الفردوس الأعلى، وأسكنكِ أعلى درجات الجنة بما صبرتِ وما أعطيتِ وما زرعتِ فينا من طيب الخلق وجميل السيرة.</p>
+    </div>
+    <div class="sig">حفيدك: زياد</div>
+  </div>
+</section>
+
+<!-- ══ يان جم ══ -->
+<section id="ziyad" class="reveal">
+  <div class="sec-head">
+    <h2>يان جم</h2>
+  </div>
+
+  <div class="card reveal">
+    <div class="badge">✦ حفيدتها — سمية</div>
+    <div class="card-title">جدّتي جميلة — روح العائلة</div>
+    <div class="prose">
+      <p>إنَّ من أقسى المشاعر التي تصيب القلب؛ الفقد.</p>
+      <p>شعورٌ مظلم، أن تقف أمام جدران وتبكيها، وتتفقد قطعة قماش أو مقتنيات مادية، لكن خلفها قصصٌ كثيرة تحكيها، وكأنك تبحث فيها عن بقايا روح غادرت هذا العالم؛ فتصبح في حيرة من علاقة المادة بما وراءها، علاقة العالم بالروح، وكيف أن طيف تلك الروح يبقى يطوف في المكان وكأنه ما غادر يومًا؛ ولكن اللقاء مُحال..</p>
+      <p style="text-align:center; color:var(--gold-light); font-size:1.2rem; margin:1rem 0;">فؤادٌ ينفطر، وسكونٌ ينطق، وذكرى تتجلّى..</p>
+      <div class="divider">✦</div>
+      <p>كانت جدّتي جميلة — <em style="color:var(--gold);">يان جم</em> — أمّ العائلة وروحها. تحضن صغيرها وكبيرها، وتغمر البيت بحياتها وحنانها. لم تكن تتذمّر من أثقالنا بل كانت تستقبلنا بكل كرم؛ تفيض عطاءً، فما تجلس في مجلسها إلا وتقدم الحلوى والأكلات والقهوة.</p>
+      <p>كانت تراني بعين قلبها، وتمنحني حبًا يفيض دفئًا وثقة.</p>
+      <div class="divider">✦</div>
+      <p>حين مرضت وأصيبت ببعض الكسور؛ رأيتها تألم وهي متعبة، لكنها — كعادتها — واجهت كل ذلك بصبر. رافقتها في تلك اللحظات من إعداد قهوة الصباح وتناول الفطور والدواء، وجلسة العصر، واستقبال الضيوف، وحتى الأحاديث الخافتة في المساء؛ ورغم الألم والتعب كانت تفرح بوجودنا وتبتسم كلما رأتنا بجانبها.</p>
+      <p>لا أنسى تلك اللحظات التي كنا نخرج فيها وقت العصر، نجلس عند باب المنزل، تستنشق بعض الهواء وتفرح بضوء الشمس. كانت لحظات بسيطة.. لكنها محفورة في قلبي إلى الأبد.</p>
+      <div class="divider">✦</div>
+      <p>تلك الأيام، رغم ما فيها من وجع، كانت من أثمن ما مرّ في حياتي. تعلّمت فيها الحب الحقيقي، والحب الذي لا يطلب مقابلًا.</p>
+      <p>وحين اشتد مرضها الأخير، كنت أتخيّل أنها ستعود وتخبرني بما أصابها؛ أتمسك بتلك الأمل حتى آخر لحظة.. لكن هذه المرة كانت الرحلة الأخيرة.</p>
+    </div>
+    <div class="sig">سمية — حفيدتها</div>
+  </div>
+</section>
+
+<!-- ══ TWEET ══ -->
+<section id="tweet" class="reveal">
+  <div class="sec-head">
+    <h2>تغريدة ابنها د. مفرح</h2>
+    <p>في ذكرى عيد الأضحى بعد رحيلها</p>
+  </div>
+
+  <div class="card reveal" style="text-align:center;">
+    <div class="badge" style="margin:0 auto 1.4rem;">✦ د. مفرح بن مسعود المالكي — X / تويتر</div>
+    <div class="prose" style="margin-bottom:1.8rem;">
+      <p>مرثية الأخ عبدالرحمن بن مسعود المالكي في والدتنا رحمها الله وأسكنها فسيح جناته.</p>
+    </div>
+    <a href="https://x.com/mufarhalmalki/status/1936398424741421417" target="_blank" class="tweet-btn">
+      <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.747l7.73-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+      اقرأ المرثية كاملةً على X
+    </a>
+  </div>
+</section>
+
+<!-- ══ VIDEO ══ -->
+<section id="video" class="reveal">
+  <div class="sec-head">
+    <h2>مقطع مرئي</h2>
+    <p>في ذكرى رحيلها رحمها الله</p>
+  </div>
+  <div class="video-card reveal">
+    <video controls>
+      <source src="مرثية_جميلة_فيديو.mp4" type="video/mp4">
+    </video>
+    <div class="video-caption">رحمها الله وأسكنها الفردوس الأعلى</div>
+  </div>
+</section>
+
+<!-- ══ TRIBUTES ══ -->
+<section id="tributes" class="reveal">
+  <div class="sec-head">
+    <h2>إشادات وتعازٍ</h2>
+    <p>كلمات أهل الحب والوفاء</p>
+  </div>
+
+  <div class="tribute reveal">
+    <div class="tribute-author">د. مفرح بن مسعود — في ذكر أمه</div>
+    <div class="prose">
+      <p>لطالما كان التميّز حليفَ أمٍّ لم تقرأ ولم تكتب، لكنها أدركت واجبها فربّت أجيالًا يفخر بهم الوطن وتنهض بهم الأمة. التميّز للأنثى ميدانٌ واسع ومضمارٌ فسيح، تظهر ثمرته في صورة ابن بار، أو أخ مخلص، أو زوج مستقيم، أو أب فخور.</p>
+      <p style="color:var(--gold-light); margin-top:.8rem;">رحم الله والدتكِ وأسكنها الفردوس الأعلى.</p>
+    </div>
+  </div>
+
+  <div class="tribute reveal">
+    <div class="tribute-author">من كلمات الأبناء</div>
+    <div class="prose">
+      <p>«ثقي أننا على وصيّتكِ محافظون، وعلى نهجكِ سائرون. نعيش على إرثكِ العظيم من القيم والنبل والوفاء، ونلمس بركة دعواتكِ التي لا تزال تحيط بنا كالسياج المنيع، وتظلّنا كالغيمة الهَمِلة.</p>
+      <p>عزاؤنا الوحيد أنكِ ضيفة الرحيم، وفي وفادة الكريم الذي هو أرحم بكِ منّا.»</p>
+    </div>
+  </div>
+
+  <div class="dua-block">
+    اللهم ارحم أماً ربّتنا صغارًا، وأسكنها الفردوس الأعلى،<br>
+    واجمعنا بها في مستقر رحمتك.
+    <span class="ameen">آمين</span>
+  </div>
+</section>
+
+<!-- ══ CERTIFICATE ══ -->
+<section id="certificate" class="reveal">
+  <div class="sec-head">
+    <h2>شهادة الوفاة</h2>
+    <p>الوثيقة الرسمية — مملكة العربية السعودية</p>
+  </div>
+
+  <div class="cert-wrap">
+    <div class="cert-head">
+      <div style="color:var(--gold);font-size:.78rem;letter-spacing:.15em;margin-bottom:.5rem;">المملكة العربية السعودية — وزارة الداخلية — الأحوال المدنية</div>
+      <div class="cert-title-ar">شهادة وفاة للسعوديين</div>
+      <div class="cert-title-en">Death Certificate for Saudis</div>
+    </div>
+
+    <div class="cert-section">
+      <div class="cert-section-title">— معلومات المتوفى —</div>
+      <div class="cert-grid">
+        <div><div class="cert-label">الاسم</div><div class="cert-val highlight">جميلة أسعد الخالدي المالكي</div></div>
+        <div><div class="cert-label">Name</div><div class="cert-val" style="font-size:.88rem;">JAMELA ASAAD ALKHALDI ALMALKI</div></div>
+        <div><div class="cert-label">رقم الهوية</div><div class="cert-val">١٠٤٠٧٨٢٤٩٠</div></div>
+        <div><div class="cert-label">الجنس</div><div class="cert-val">أنثى</div></div>
+        <div><div class="cert-label">تاريخ الميلاد</div><div class="cert-val">١٣٧٦/٠٧/٠١ هـ</div></div>
+        <div><div class="cert-label">Date of Birth</div><div class="cert-val">31/01/1957</div></div>
+      </div>
+    </div>
+
+    <div class="cert-section">
+      <div class="cert-section-title">— معلومات الوفاة —</div>
+      <div class="cert-grid">
+        <div><div class="cert-label">مكان الوفاة</div><div class="cert-val">أبها — المملكة العربية السعودية</div></div>
+        <div><div class="cert-label">Place of Death</div><div class="cert-val">Saudi Arabia</div></div>
+        <div><div class="cert-label">تاريخ الوفاة</div><div class="cert-val highlight">١٤٤٦/١١/١٣ هـ</div></div>
+        <div><div class="cert-label">Date of Death</div><div class="cert-val">11/05/2025</div></div>
+        <div><div class="cert-label">الساعة</div><div class="cert-val">١٣:١٠</div></div>
+        <div><div class="cert-label">سبب الوفاة</div><div class="cert-val">وفاة طبيعية</div></div>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:.5rem 2rem;font-size:.88rem;margin-bottom:.5rem;">
+      <div><span style="color:var(--ink-soft);">رقم الشهادة: </span><span style="color:var(--cream);">٢٩٦٢٣</span></div>
+      <div><span style="color:var(--ink-soft);">تاريخ الشهادة: </span><span style="color:var(--cream);">١٤٤٦/١١/١٣ هـ</span></div>
+    </div>
+
+    <div class="cert-footer">أصدرت هذه الوثيقة آليًا — بوابة الوزارة الإلكترونية</div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="footer-ornament"></div>
+  <div class="footer-name">جميلة أسعد المالكي</div>
+  <div class="footer-sub">
+    رحمها الله وأسكنها الفردوس الأعلى<br>
+    <span style="font-size:.8rem; opacity:.4;">موقع إحياءً لذكراها وتكريمًا لعطائها الدائم</span>
+  </div>
+  <div class="footer-ornament" style="margin-top:1.5rem;"></div>
+</footer>
+
+<script>
+// Stars
+const sc = document.getElementById('stars');
+for(let i=0;i<140;i++){
+  const s=document.createElement('div');
+  s.className='star';
+  const sz=.5+Math.random()*2;
+  s.style.cssText=`top:${Math.random()*100}%;left:${Math.random()*100}%;width:${sz}px;height:${sz}px;--d:${2+Math.random()*5}s;--delay:${Math.random()*6}s;opacity:${.1+Math.random()*.4};`;
+  sc.appendChild(s);
+}
+
+// Reveal on scroll
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});
+},{threshold:.08,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+// Active nav
+const sections=document.querySelectorAll('section[id]');
+const navLinks=document.querySelectorAll('nav a');
+const navObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      navLinks.forEach(a=>a.style.color='');
+      const a=document.querySelector(`nav a[href="#${e.target.id}"]`);
+      if(a) a.style.color='var(--gold-light)';
+    }
+  });
+},{threshold:.3});
+sections.forEach(s=>navObs.observe(s));
+</script>
+</body>
+</html>
